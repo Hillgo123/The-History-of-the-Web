@@ -28,11 +28,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const blob = document.querySelector('.blob');
 
+
+const move_blob = (e) => {
+    const x = e.pageX - blob.offsetWidth / 2,
+        y = e.pageY - blob.offsetHeight / 2;
+
+    const keyframes = {
+        transform: `translate(${x}px, ${y}px)`
+    }
+
+    blob.animate(keyframes, {
+        duration: 1500,
+        fill: 'forwards'
+    });
+}
+
+
 document.addEventListener('mousemove', (e) => {
-    blob.style.left = (e.pageX - 150) + 'px';
-    blob.style.top = (e.pageY - 150) + 'px';
+    move_blob(e);
 });
-
-
-
-
